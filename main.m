@@ -70,3 +70,41 @@ fprintf('%c', decoded_message3);
 fprintf('\n');
 
 disp(" ")
+
+disp("-----ПРАКТИКА 4-----")
+
+QPSK_symbols = QPSK_mapper(interleaved_message);
+
+for i = 1:length(QPSK_symbols)
+    fprintf('QPSK символ %d: %.3f + %.3fi\n', i, real(QPSK_symbols(i)), imag(QPSK_symbols(i)));
+end
+
+disp(" ")
+
+bit_sequence_after_demapper = QPSK_demapper(QPSK_symbols);
+disp("Битовая последовательность после QPSK-демодулятора: ")
+fprintf('%d', bit_sequence_after_demapper);
+fprintf('\n')
+
+disp(" ")
+
+deinterleaved_message4 = inverse_interleaving(bit_sequence_after_demapper);
+disp("Битовая последовательность после обратного перемежения: ")
+fprintf('%d', deinterleaved_message4);
+fprintf('\n');
+
+disp(" ")
+
+conv_decoded_message4 = conv_decoder_viterbi(deinterleaved_message4);
+disp("Битовая последовательность после декодера Витерби: ")
+fprintf('%d', conv_decoded_message4);
+fprintf('\n');
+
+disp(" ")
+
+decoded_message4 = sign_decoder(conv_decoded_message4);
+disp("Декодированное сообщение: ")
+fprintf('%c', decoded_message4);
+fprintf('\n');
+
+disp(" ")
