@@ -38,3 +38,35 @@ decoded_message2 = sign_decoder(conv_decoded_message);
 disp("Декодированное сообщение: ")
 fprintf('%c', decoded_message2);
 fprintf('\n');
+
+disp(" ")
+
+disp("-----ПРАКТИКА 3-----")
+
+interleaved_message = interleaving(conv_encoded_message);
+disp("Битовая последовательность после перемежения: ")
+fprintf('%d', interleaved_message);
+fprintf('\n');
+
+disp(" ")
+
+deinterleaved_message = inverse_interleaving(interleaved_message);
+disp("Битовая последовательность после обратного перемежения: ")
+fprintf('%d', deinterleaved_message);
+fprintf('\n');
+
+disp(" ")
+
+conv_decoded_message3 = conv_decoder_viterbi(deinterleaved_message);
+disp("Битовая последовательность после декодера Витерби: ")
+fprintf('%d', conv_decoded_message3);
+fprintf('\n');
+
+disp(" ")
+
+decoded_message3 = sign_decoder(conv_decoded_message3);
+disp("Декодированное сообщение: ")
+fprintf('%c', decoded_message3);
+fprintf('\n');
+
+disp(" ")
