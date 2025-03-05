@@ -6,7 +6,9 @@ function decoded_message = sign_decoder(encoded_message)
 
         bits = encoded_message(i:i+7);
 
-        symbol = ascii_table_reverse(bits);
+        bits_str = char(bits + '0');
+
+        symbol = ascii_table_reverse(bits_str);
 
         decoded_message = [decoded_message, symbol];
     end

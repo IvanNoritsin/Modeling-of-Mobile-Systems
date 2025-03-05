@@ -6,7 +6,8 @@ function encoded_message = sign_coder(text_message)
         
         bits = ascii_table(text_message(i));
         
-        encoded_message = [encoded_message, bits];
+        encoded_message = [encoded_message, str2num(bits(:))'];
+
     end
 
 end
