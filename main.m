@@ -111,10 +111,18 @@ disp(" ")
 
 disp("-----ПРАКТИКА 5-----")
 
-OFDM_symbol = OFDM_modulator(QPSK_symbols, 5, 1/4);
+OFDM_symbol = OFDM_modulator(QPSK_symbols, 3, 1/8);
 
 for i = 1:length(OFDM_symbol)
     fprintf('OFDM поднесущая %d: %.3f + %.3fi\n', i, real(OFDM_symbol(i)), imag(OFDM_symbol(i)));
 end
 
 disp(" ")
+
+disp("-----ПРАКТИКА 6-----")
+
+S_rx = channel_model(OFDM_symbol, 8, -70);
+
+for i = 1:length(S_rx)
+    fprintf('OFDM поднесущая (приём) %d: %.3f + %.3fi\n', i, real(S_rx(i)), imag(S_rx(i)));
+end
