@@ -108,3 +108,13 @@ fprintf('%c', decoded_message4);
 fprintf('\n');
 
 disp(" ")
+
+disp("-----ПРАКТИКА 5-----")
+
+OFDM_symbol = OFDM_modulator(QPSK_symbols, 5, 1/4);
+
+for i = 1:length(OFDM_symbol)
+    fprintf('OFDM поднесущая %d: %.3f + %.3fi\n', i, real(OFDM_symbol(i)), imag(OFDM_symbol(i)));
+end
+
+disp(" ")
