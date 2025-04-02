@@ -126,3 +126,13 @@ S_rx = channel_model(OFDM_symbol, 8, -70);
 for i = 1:length(S_rx)
     fprintf('OFDM поднесущая (приём) %d: %.3f + %.3fi\n', i, real(S_rx(i)), imag(S_rx(i)));
 end
+
+disp(" ")
+
+disp("-----ПРАКТИКА 7-----")
+
+QPSK_symbols_rx = OFDM_demodulator(S_rx, 3, 1/8, length(QPSK_symbols));
+
+for i = 1:length(QPSK_symbols_rx)
+    fprintf('QPSK символ (приём) %d: %.3f + %.3fi\n', i, real(QPSK_symbols_rx(i)), imag(QPSK_symbols_rx(i)));
+end
