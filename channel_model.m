@@ -1,4 +1,4 @@
-function S_rx = channel_model(S_tx, N_b, N_0)
+function S_rx = channel_model(S_tx, N_b, SNR_dB)
     
     L = length(S_tx);
     c = 3e8;
@@ -17,11 +17,16 @@ function S_rx = channel_model(S_tx, N_b, N_0)
         S_mpy(1:length(delayed_signal)) = S_mpy(1:length(delayed_signal)) + delayed_signal;
     end
 
-    M = length(S_mpy);
-    n = wgn(M, 1, N_0);
+    S_rx = S_mpy(1:L);
 
-    S_rx = S_mpy + n;
-    S_rx = S_rx(1:L);
+    P_signal = mean(abs(S_rx).^2);
+    SNR_linear = 10 ^ (SNR_dB / 10); 
+    N_0 = P_signal / (SNR_linear * B); 
+    noise_power = N_0 * B;
+    
+    noise = sqrt(noise_power / 2) * (randn(size(S_rx)) + 1i * randn(size(S_rx)));
+    S_rx = S_rx + noise;
 
 end
+
 

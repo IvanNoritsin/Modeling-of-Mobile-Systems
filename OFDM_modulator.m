@@ -13,12 +13,6 @@ function OFDM_symbol = OFDM_modulator(QPSK_symbols, RS, T)
     OFDM_symbol(pilot_subcarriers) = pilot_value;
     OFDM_symbol(data_subcarriers) = QPSK_symbols;
 
-    figure;
-    plot(subcarriers, abs(OFDM_symbol), 'b-', 'LineWidth', 1);
-    title('Спектр переданного OFDM-символа');
-    grid on;
-    xlim([1 N_rs_qpsk]);
-
     C = 1 / 4;
     N_z = floor(C * (N_rs_qpsk));
     OFDM_symbol = [zeros(1, N_z), OFDM_symbol, zeros(1, N_z)];
